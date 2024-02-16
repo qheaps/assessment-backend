@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Back End Assessment</title>
+</head>
+
+<body class="container">
+  <button id="complimentButton">Get a compliment</button>
+  <button id="fortuneButton">Get a fortune</button>
+  <section id="todo-section">
+    <form>
+      <input id="todo-input" placeholder="Add Item!/ID"/>
+      <button id="todo-submit">submit</button>
+      <button id="todo-delete">delete</button>
+      <button id="todo-update-id">update ID</button>
+    </form>
+    <form>
+      <input id="todo-update-input" placeholder="Insert New Text!"/>
+      <button id="todo-update-submit">submit</button>
+    </form>
+    <section id="listed-items">
+      <p>To update, enter item ID and then updated text</p>
+      <h1>Your Items</h1>
+      <ol id="todo-list">
+      </ol>
+    </section>
+  </section>
+
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+  <script src="./main.js"></script>
+
+</body>
+</html>
