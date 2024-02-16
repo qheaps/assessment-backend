@@ -37,24 +37,19 @@ module.exports = {
     },
     deleteItem: (req, res) => {
         const { id } = req.params
-        // console.log(items)
         items.splice(items.findIndex(items => items.id === +id), 1)
-        // console.log(items)
 
         res.status(200).send(items)
     },
     updateItem: (req, res) => {
-        const {text} = req.body
+        const newText = req.body.newText
         const {id} = req.params
-
         let index = items.findIndex(item => item.id === +id)
 
-        console.log(text)
-        items[index].text = text
+        items[index].text = newText
         console.log(items[index])
-
+        console.log(items)
+        
         res.status(200).send(items)
-
-
     }
 }
