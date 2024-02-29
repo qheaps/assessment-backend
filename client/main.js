@@ -7,7 +7,6 @@ const deleteBtn = document.getElementById("todo-delete")
 const updateIdBtn = document.getElementById("todo-update-id")
 const updateSubmitBtn = document.getElementById("todo-update-submit")
 
-
 function postItem(obj) {
     axios.post("http://localhost:4000/api/todo/", obj)
         .then(res => {

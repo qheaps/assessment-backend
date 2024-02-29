@@ -1,6 +1,16 @@
 let globalID = 1
 let items = []
 
+var Rollbar = require('rollbar')
+var rollbar = new Rollbar({
+  accessToken: '3b378524ade44debba86885102ec8ee5',
+  captureUncaught: true,
+  captureUnhandledRejections: true,
+})
+
+// record a generic message and send it to Rollbar
+rollbar.log('Hello world!')
+
 module.exports = {
 
     getCompliment: (req, res) => {
@@ -18,7 +28,7 @@ module.exports = {
         // choose random compliment
         let randomIndex = Math.floor(Math.random() * fortune.length);
         let randomFortune = fortune[randomIndex];
-      
+        rollbar.info("Someone Got Fortunes")
         res.status(200).send(randomFortune);
     },
     
@@ -45,11 +55,14 @@ module.exports = {
         const newText = req.body.newText
         const {id} = req.params
         let index = items.findIndex(item => item.id === +id)
-
-        items[index].text = newText
-        console.log(items[index])
-        console.log(items)
-        
+        if (index === -1) {
+            rollbar.warning("user attempted to modify item that does not exist.")
+            console.log("nope")
+        } else {
+            items[index].text = newText
+            console.log(items[index])
+            console.log(items)
+        }
         res.status(200).send(items)
     }
 }
